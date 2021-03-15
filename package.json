@@ -1,27 +1,23 @@
 {
-    "name": "MOOC_node_mod3-bbdd_entrega",
-    "author": "ging-moocs",
-    "license": "GNU",
-    "version": "0.0.0",
-    "engines": {
-        "node": "12.16"
-    },
-    "info": {
-        "githubURL": "ging-moocs/MOOC_node_mod3-bbdd_entrega",
-        "serverUrl": "https://autocorector.dit.upm.es/",
-        "courseId": "2",
-        "assignmentId": "9"
-    },
-    "scripts": {
-        "migrate": "sequelize db:migrate --url sqlite://$(pwd)/db.sqlite",
-        "seed": "sequelize db:seed:all --url sqlite://$(pwd)/db.sqlite",
-        "migrate_win": "sequelize db:migrate --url sqlite://%cd%/db.sqlite",
-        "seed_win": "sequelize db:seed:all --url sqlite://%cd%/db.sqlite",
-        "start": "node main.js"
-    },
-    "dependencies": {
-        "sequelize": "^5.21.3",
-        "sequelize-cli": "^5.5.0",
-        "sqlite3": "^4.0.9"
-    }
+  "name": "user_quiz",
+  "version": "1.0.0",
+  "description": "Educational node.js project to start with DBs, sequelize & sockets",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CORE-UPM/user_quiz"
+  },
+  "author": "Juan Quemada",
+  "license": "GNUv3 - General Public License version 3",
+  "bugs": {
+    "url": "https://github.com/CORE-UPM/user_quiz/issues"
+  },
+  "homepage": "https://github.com/CORE-UPM/user_quiz#readme",
+  "dependencies": {
+    "sequelize": "^5.21.3",
+    "sqlite3": "^4.0.9"
+  }
 }

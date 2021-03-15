@@ -1,5 +1,5 @@
 
-const {User, Quiz} = require("./model.js").models;
+const User = require("./model.js").models.User
 
 exports.help = (rl) => 
   rl.log(
@@ -11,16 +11,6 @@ exports.help = (rl) =>
     > ru | ur | r    ## user: read (show age)
     > uu             ## user: update
     > du | ud        ## user: delete
-    >
-    > lq | ql | q    ## quizzes: list all
-    > cq | qc        ## quiz: create
-    > tq | qt | t    ## quiz: test (play)
-    > uq | qu        ## quiz: update
-    > dq | qd        ## quiz: delete
-    >
-    > lf | fl | f    ## favourites: list all
-    > cf | fc        ## favourite: create
-    > df | fd        ## favourite: delete
     >
     > e              ## exit & return to shell`
   )
@@ -48,34 +38,18 @@ exports.create = async (rl) => {
   rl.log(`   ${name} created with ${age} years`);
 }
 
-// Show user's age, quizzes & favourites
+// Show user's age
 exports.read = async (rl) => {
 
   let name = await rl.questionP("Enter name");
   if (!name) throw new Error("Response can't be empty!");
 
-  let user = await User.findOne({
-    where: {name},
-    include: [
-      { model: Quiz, as: 'posts'},
-      { model: Quiz, as: 'fav',
-        include: [{ model: User, as: 'author'}]
-      }
-    ]
-});
-if (!user) throw new Error(`  '${name}' is not in DB`);
+  let user = await User.findOne(
+    { where: {name},}
+  );
+  if (!user) throw new Error(`  '${name}' is not in DB`);
 
   rl.log(`  ${user.name} is ${user.age} years old`);
-
-  rl.log(`    Quizzes:`)
-  user.posts.forEach(
-    (quiz) => rl.log(`      ${quiz.question} -> ${quiz.answer} (${quiz.id})`)
-  );
-
-  rl.log(`    Favourite quizzes:`)
-  user.fav.forEach( (quiz) => 
-    rl.log(`      ${quiz.question} -> ${quiz.answer} (${quiz.author.name}, ${quiz.id})`)
-  );
 }
 
 // Update the user (identified by name) in the DB
@@ -99,7 +73,7 @@ exports.update = async (rl) => {
   rl.log(`  ${old_name} updated to ${name}, ${age}`);
 }
 
-// Delete user & his quizzes/favourites (relation: onDelete: 'cascade')
+// Delete user (identified by name) in the DB
 exports.delete = async (rl) => {
 
   let name = await rl.questionP("Enter name");
