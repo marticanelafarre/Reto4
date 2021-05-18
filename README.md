@@ -1,4 +1,6 @@
 
+
+Marti Canela
 # user_quiz
 Educational node.js project to start with DBs, sequelize & sockets. The project has a Git branch for each step:
 

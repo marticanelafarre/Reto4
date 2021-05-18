@@ -12,6 +12,20 @@ exports.help = (rl) =>
     > uu             ## user: update
     > du | ud        ## user: delete
     >
+    > lq | ql | q    ## quizzes: list all
+    > cq | qc        ## quiz: create
+    > tq | qt | t    ## quiz: test (play)
+    > uq | qu        ## quiz: update
+    > dq | qd        ## quiz: delete
+    >
+    > lf | fl | f    ## favourites: list all
+    > cf | fc        ## favourite: create
+    > df | fd        ## favourite: delete
+    >
+    > p | play       ## play - jugar
+    > 
+    > ls             ## list score (list Puntuación )
+    >
     > e              ## exit & return to shell`
   )
 

@@ -16,7 +16,7 @@ exports.list = async (rl) =>  {
   );
 }
 
-// Create quiz with <question> and <answer> in the DB
+// Tenia que llegar a 5 commits y no se tocar mucho mas
 exports.create = async (rl) => {
 
   let name = await rl.questionP("Enter user");
